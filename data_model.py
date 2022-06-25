@@ -33,12 +33,11 @@ class DataModel():
         le_type.fit(self.df["AUSPRAEGUNG"].values)
         self.df['AUSPRAEGUNG'] = le_type.transform(self.df["AUSPRAEGUNG"].values)
         
- 
-
 
 if __name__ == "__main__":
     
-    dm = DataModel("220511_monatszahlenmonatszahlen2204_verkehrsunfaelle.csv")
-    foo = dm.df[dm.df["JAHR"] >= 2021]
+    dm = DataModel("data/220511_monatszahlenmonatszahlen2204_verkehrsunfaelle.csv")
+    foo = dm.df[dm.df["JAHR"] < 2021].reset_index(drop=True)
+
     print(foo)
 
