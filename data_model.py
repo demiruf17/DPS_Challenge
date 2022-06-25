@@ -18,11 +18,11 @@ class DataModel():
         # drop the rows that contains total yearly sum
         self.df = self.df[~self.df["MONAT"].isin(["Summe"])]
 
-
         # extract months
         self.df["MONAT"] = self.df["MONAT"].apply(lambda x : x[-2:])   
         self.df = self.df.reset_index(drop=True)
         
+    def encode_label(self):
         # relabel the category and type of the accidents
         le_category = preprocessing.LabelEncoder()
         le_category.fit(self.df["MONATSZAHL"].values)
@@ -32,7 +32,8 @@ class DataModel():
         le_type = preprocessing.LabelEncoder()
         le_type.fit(self.df["AUSPRAEGUNG"].values)
         self.df['AUSPRAEGUNG'] = le_type.transform(self.df["AUSPRAEGUNG"].values)
-        
+
+
 
 if __name__ == "__main__":
     
