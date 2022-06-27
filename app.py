@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
 app.config["JSONIFY_MIMETYPE"] = "application/json; charset=utf-8"
 
-model = load("models/random_forest.pickle")
+model = load("models/voting_rf_et.pickle")
 
 @app.route('/result',methods = ['POST'])
 def result():
